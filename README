@@ -1,0 +1,27 @@
+// ===================================================================================
+// Isadora OpenFrameworks additions       2011 Vincent Rebers. http://www.say-nono.com
+// ===================================================================================
+//
+// IMPORTANT:
+// In order to avoid FMODex you need to modify two openframeworks files and be sure that you add the 
+// definition -DUSE_OPENAL to the Project Settings (in my case "GCC 4.2" -> "Other C++ Flags"):
+// ---------------------------------------------------------------------------------
+//
+//	ofMain.h (Line:xxx) :
+//	//--------------------------
+//	// audio
+//	#include "ofSoundStream.h"
+//	#ifndef USE_OPENAL		//<----- if USE_OPENAL is selected, don't load the regular ofSoundPlayer
+//		#include "ofSoundPlayer.h"
+//	#endif					//
+//
+// ---------------------------------------------------------------------------------
+//
+//	ofAppRunner.cpp (Line:58) :
+//	//------------------------
+//	// try to close FMOD:
+//	#ifndef USE_OPENAL				//<----- if USE_OPENAL is selected, don't load the regular ofSoundPlayer
+//		ofSoundPlayer::closeFmod();
+//	#endif							//
+//
+//// ---------------------------------------------------------------------------------
